@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -60,7 +60,7 @@ jobs:
           echo "LOWERCASE_WORKER_IMAGE_NAME=${LOWERCASE_WORKER_IMAGE_NAME}" >> $GITHUB_ENV
 
       - name: Build and push Backend Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
@@ -77,7 +77,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.LOWERCASE_BACKEND_IMAGE_NAME }}:latest
 
       - name: Build and push Worker Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
